@@ -19,20 +19,20 @@ PkgFinder is a lightweight and fast browser extension that adds smart package di
 ### 1. Clone the repo:
 
 ```bash
-   git clone https://github.com/yorickcleerbout/PkgFinder.git
-   cd PkgFinder
+git clone https://github.com/yorickcleerbout/PkgFinder.git
+cd PkgFinder
 ```
 
 ### 2. Install dependencies
 
 ```bash
-    npm install
+npm install
 ```
 
 ### 3. Build the extension
 
 ```bash
-    npm run build
+npm run build
 ```
 
 ### 4. Load the extension:
@@ -48,9 +48,9 @@ PkgFinder is a lightweight and fast browser extension that adds smart package di
 * Type `pkg`, then space, followed by your query:
 
 ```rust
-    pkg npm axios
-    pkg py requests
-    pkg pub provider
+pkg npm axios
+pkg py requests
+pkg pub provider
 ```
 
 You’ll see suggestions with version info, description, and links — click one to jump directly to the package.
