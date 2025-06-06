@@ -1,7 +1,7 @@
 import type { PkgSuggestion, RegistrySuggestionInput } from '../core/types.js';
 import { buildSuggestion } from '../core/formatter.js';
 import { getFlairMode } from '../core/settings.js';
-import {safeFetch} from '../core/net.js';
+import { safeFetch } from '../core/net.js';
 
 export async function fetchPubSuggestions(query: string): Promise<PkgSuggestion[]> {
     const flairMode = await getFlairMode();
@@ -15,17 +15,12 @@ export async function fetchPubSuggestions(query: string): Promise<PkgSuggestion[
         return [];
     }
 
-
-    // const res = await fetch(`https://pub.dev/api/search?q=${encodeURIComponent(query)}`);
-    // const data = await res.json();
-
     const packages = result.data.packages.slice(0, 5);
 
     const suggestions: PkgSuggestion[] = [];
 
     for (const pkg of packages) {
-        // const res = await fetch(`https://pub.dev/api/packages/${pkg.package}`);
-        // const data = await res.json();
+
         const detailResult = await safeFetch<any>(`https://pub.dev/api/packages/${pkg.package}`);
 
         if (!detailResult.ok) {

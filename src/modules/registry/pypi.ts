@@ -47,7 +47,6 @@ async function fetchSearchResultsFromWeb(query: string): Promise<string[]> {
 
 async function fetchPypiPackageInfo(name: string) {
     const res = await safeFetch<any>(`https://pypi.org/pypi/${name}/json`);
-    // const data = await res.json();
     if (!res.ok) return res;
 
     const data = res.data;
@@ -60,10 +59,4 @@ async function fetchPypiPackageInfo(name: string) {
             upload_time: data.releases[data.info.version]?.[0]?.upload_time_iso_8601 || data.info.upload_time_iso_8601
         }
     } as const;
-
-    // return {
-    //     version: data.info.version,
-    //     summary: data.info.summary,
-    //     upload_time: data.releases[data.info.version]?.[0]?.upload_time_iso_8601 || data.info.upload_time_iso_8601
-    // };
 }

@@ -21,9 +21,6 @@ export async function fetchNpmSuggestions(query: string): Promise<PkgSuggestion[
         return [];
     }
 
-    // const res = await fetch(`https://registry.npmjs.org/-/v1/search?text=${encodeURIComponent(query)}&size=5`);
-    // const data = await res.json();
-
     return result.data.objects.map((pkg: any) => {
         const input: RegistrySuggestionInput = {
             registry: 'npm',
