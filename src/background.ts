@@ -1,5 +1,5 @@
-import { getRecentSearches } from './modules/core/storage.js';
-import { fetchSuggestionsByPrefix } from './modules/core/registryRouter.js';
+import { getRecentSearches, storeRecentSearch } from './modules/core/storage.js';
+import { fetchSuggestionsByPrefix, resolvePackageUrl } from './modules/core/registryRouter.js';
 import { toggleFlairMode } from './modules/core/settings.js';
 
 chrome.omnibox.onInputChanged.addListener(async (text, suggest) => {
@@ -17,6 +17,16 @@ chrome.omnibox.onInputChanged.addListener(async (text, suggest) => {
 
     const suggestions = await fetchSuggestionsByPrefix(prefix, query);
     suggest(suggestions);
+});
+
+chrome.omnibox.onInputEntered.addListener(async (text) => {
+    await storeRecentSearch(text);
+
+    const [prefix, ...queryParts] = text.trim().split(' ');
+    const query = queryParts.join(' ') || prefix;
+
+    const url = resolvePackageUrl(prefix, query);
+    await chrome.tabs.create({ url });
 });
 
 chrome.commands.onCommand.addListener(async (command) => {

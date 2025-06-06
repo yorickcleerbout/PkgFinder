@@ -15,3 +15,17 @@ export async function fetchSuggestionsByPrefix(prefix: string, query: string) {
             return [];
     }
 }
+
+export function resolvePackageUrl(prefix: string, query: string): string {
+    switch (prefix.toLowerCase()) {
+        case 'npm':
+            return `https://www.npmjs.com/package/${query}`;
+        case 'py':
+            return `https://pypi.org/project/${query}`;
+        case 'pub':
+        case 'dart':
+            return `https://pub.dev/packages/${query}`;
+        default:
+            return `https://www.npmjs.com/search?q=${encodeURIComponent(prefix + ' ' + query)}`;
+    }
+}
