@@ -17,20 +17,6 @@ export async function fetchSuggestionsByPrefix(prefix: string, query: string) {
     }
 }
 
-// export function resolvePackageUrl(prefix: string, query: string): string {
-//     switch (prefix.toLowerCase()) {
-//         case 'npm':
-//             return `https://www.npmjs.com/package/${query}`;
-//         case 'py':
-//             return `https://pypi.org/project/${query}`;
-//         case 'pub':
-//         case 'dart':
-//             return `https://pub.dev/packages/${query}`;
-//         default:
-//             return `https://www.npmjs.com/search?q=${encodeURIComponent(prefix + ' ' + query)}`;
-//     }
-// }
-
 export function resolvePackageUrl(prefix: string, query: string): string {
     const normalized = normalizePrefix(prefix);
     const meta = registryMetaMap[normalized];
