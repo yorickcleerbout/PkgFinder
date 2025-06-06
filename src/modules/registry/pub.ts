@@ -1,4 +1,5 @@
-import { escapeOmniboxText } from './utils.js';
+import { buildSuggestion } from '../utils.js';
+import { getFlairMode } from '../settings.js';
 
 export interface PubSuggestion {
     content: string;
@@ -6,30 +7,28 @@ export interface PubSuggestion {
 }
 
 export async function fetchPubSuggestions(query: string): Promise<PubSuggestion[]> {
+
     const res = await fetch(`https://pub.dev/api/search?q=${encodeURIComponent(query)}`);
     const data = await res.json();
 
     const packages = data.packages.slice(0, 5);
+    const flairMode = await getFlairMode();
+
     const suggestions: PubSuggestion[] = [];
 
     for (const pkg of packages) {
-        const info = await fetchPubPackageInfo(pkg.package);
-        suggestions.push(info);
+        const res = await fetch(`https://pub.dev/api/packages/${pkg.package}`);
+        const data = await res.json();
+
+        suggestions.push(buildSuggestion({
+            registry: 'dart',
+            name: data.name,
+            summary: data.latest.pubspec.description,
+            version: data.latest.version,
+            updated: data.latest.published,
+            flairMode
+        }));
     }
 
     return suggestions;
-}
-
-async function fetchPubPackageInfo(name: string): Promise<PubSuggestion> {
-    const res = await fetch(`https://pub.dev/api/packages/${name}`);
-    const data = await res.json();
-
-    const version = data.latest.version;
-    const updated = new Date(data.latest.published).toLocaleDateString();
-    const desc = data.latest.pubspec.description;
-
-    return {
-        content: `dart ${name}`,
-        description: escapeOmniboxText(`${name} — ${desc} (v${version}, updated ${updated})`)
-    };
 }

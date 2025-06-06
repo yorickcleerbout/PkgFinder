@@ -1,4 +1,5 @@
-import { escapeOmniboxText } from './utils.js';
+import { buildSuggestion } from '../utils.js';
+import { getFlairMode } from '../settings.js';
 
 export interface PypiSuggestion {
     content: string;
@@ -6,6 +7,7 @@ export interface PypiSuggestion {
 }
 
 export async function fetchPypiSuggestions(query: string): Promise<PypiSuggestion[]> {
+    const flairMode = await getFlairMode();
     const names = await fetchSearchResultsFromWeb(query);
 
     const suggestions: PypiSuggestion[] = [];
@@ -15,10 +17,14 @@ export async function fetchPypiSuggestions(query: string): Promise<PypiSuggestio
             const info = await fetchPypiPackageInfo(name);
             const { version, summary, upload_time } = info;
 
-            suggestions.push({
-                content: `pypi ${name}`,
-                description: escapeOmniboxText(`${name} — ${summary || 'No description'} (v${version}, updated ${new Date(upload_time).toLocaleDateString()})`)
-            });
+            suggestions.push(buildSuggestion({
+                registry: 'pypi',
+                name: name,
+                summary: summary,
+                version: version,
+                updated: new Date(upload_time).toLocaleDateString(),
+                flairMode
+            }))
         } catch (e) {
             console.log(e);
         }
