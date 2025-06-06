@@ -27,7 +27,9 @@
     "storage"
   ],
   "host_permissions": [
-    "https://registry.npmjs.org/*"
+    "https://registry.npmjs.org/*",
+    "https://pypi.org/*",
+    "https://pub.dev/*"
   ],
   "commands": {
     "focus-omnibox": {
