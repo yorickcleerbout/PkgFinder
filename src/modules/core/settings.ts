@@ -1,4 +1,4 @@
-import type { FlairMode } from './types.js';
+import type { FlairMode } from './core/types';
 
 export async function getFlairMode(): Promise<FlairMode> {
     return new Promise(resolve => {

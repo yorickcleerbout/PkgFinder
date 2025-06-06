@@ -1,4 +1,5 @@
-import { RegistrySuggestionInput, PkgSuggestion } from './types.js';
+import { RegistrySuggestionInput, PkgSuggestion } from './core/types';
+import { registryIcons } from './core/constants.js';
 
 export function escapeOmniboxText(text: string): string {
     return text
@@ -8,18 +9,14 @@ export function escapeOmniboxText(text: string): string {
         .replace(/'/g, '&quot;');
 }
 
-const icons: Record<RegistrySuggestionInput['registry'], string> = {
-    npm: '🟢 npm',
-    pypi: '🐍 PyPI',
-    dart: '🎯 Dart'
-};
-
 export function buildSuggestion(input: RegistrySuggestionInput): PkgSuggestion {
     const { registry, name, summary, version, updated, flairMode } = input;
     const summarySafe = escapeOmniboxText(summary || 'No description');
     const date = new Date(updated).toLocaleDateString();
 
-    const description = flairMode === 'detailed' ? `${icons[registry]} | 📦 ${name} — ${summarySafe} 🆕 v${version} 📅 ${date}` : `${icons[registry]} | ${name} v${version}`;
+    const icon = registryIcons[registry];
+
+    const description = flairMode === 'detailed' ? `${icon} | 📦 ${name} — ${summarySafe} 🆕 v${version} 📅 ${date}` : `${icon} | ${name} v${version}`;
 
     return {
         content: `${registry} ${name}`,
