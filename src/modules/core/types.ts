@@ -19,3 +19,16 @@ export interface PkgSuggestion {
     content: string;
     description: string;
 }
+
+// Generic success/failure container
+export type Result<T> = Success<T> | Failure;
+
+export interface Success<T> {
+    ok: true;
+    data: T;
+}
+
+export interface Failure {
+    ok: false;
+    error: Error;
+}

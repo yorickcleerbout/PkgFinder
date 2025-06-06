@@ -1,6 +1,6 @@
-import { fetchNpmSuggestions } from '../registry/npm';
-import { fetchPypiSuggestions } from '../registry/pypi';
-import { fetchPubSuggestions } from '../registry/pub';
+import { fetchNpmSuggestions } from '../registry/npm.js';
+import { fetchPypiSuggestions } from '../registry/pypi.js';
+import { fetchPubSuggestions } from '../registry/pub.js';
 
 export async function fetchSuggestionsByPrefix(prefix: string, query: string) {
     switch (prefix.toLowerCase()) {
