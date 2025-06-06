@@ -1,5 +1,5 @@
 import { RegistrySuggestionInput, PkgSuggestion } from './types.js';
-import { registryIcons } from './constants.js';
+import { registryMetaMap } from './constants.js';
 
 export function escapeOmniboxText(text: string): string {
     return text
@@ -14,7 +14,7 @@ export function buildSuggestion(input: RegistrySuggestionInput): PkgSuggestion {
     const summarySafe = escapeOmniboxText(summary || 'No description');
     const date = new Date(updated).toLocaleDateString();
 
-    const icon = registryIcons[registry];
+    const icon = registryMetaMap[registry].icon;
 
     const description = flairMode === 'detailed' ? `${icon} | 📦 ${name} — ${summarySafe} 🆕 v${version} 📅 ${date}` : `${icon} | ${name} v${version}`;
 
