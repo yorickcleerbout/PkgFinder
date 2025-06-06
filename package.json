@@ -2,9 +2,8 @@
   "name": "pkgfinder",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc && npm run copy",
-    "watch": "tsc -w",
-    "copy": "cp manifest.json dist/ && cp -R public/icons dist/icons"
+    "build": "tsc",
+    "watch": "tsc -w"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.326",
