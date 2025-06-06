@@ -1,4 +1,4 @@
-import { FlairMode } from './settings.js';
+import { RegistrySuggestionInput, PkgSuggestion } from './types.js';
 
 export function escapeOmniboxText(text: string): string {
     return text
@@ -8,31 +8,18 @@ export function escapeOmniboxText(text: string): string {
         .replace(/'/g, '&quot;');
 }
 
-// Suggestions Formatter
-type Registry = 'npm' | 'pypi' | 'dart';
-
-const icons: Record<Registry, string> = {
+const icons: Record<RegistrySuggestionInput['registry'], string> = {
     npm: '🟢 npm',
     pypi: '🐍 PyPI',
     dart: '🎯 Dart'
 };
 
-interface SuggestionInput {
-    registry: Registry;
-    name: string;
-    summary: string;
-    version: string;
-    updated: string;
-    flairMode: FlairMode;
-}
-
-export function buildSuggestion({  registry, name, summary, version, updated, flairMode }: SuggestionInput): chrome.omnibox.SuggestResult {
+export function buildSuggestion(input: RegistrySuggestionInput): PkgSuggestion {
+    const { registry, name, summary, version, updated, flairMode } = input;
     const summarySafe = escapeOmniboxText(summary || 'No description');
     const date = new Date(updated).toLocaleDateString();
 
-    const description = flairMode === 'detailed'
-        ? `${icons[registry]} | 📦 ${name} — ${summarySafe} 🆕 v${version} 📅 ${date}`
-        : `${icons[registry]} | ${name} v${version}`;
+    const description = flairMode === 'detailed' ? `${icons[registry]} | 📦 ${name} — ${summarySafe} 🆕 v${version} 📅 ${date}` : `${icons[registry]} | ${name} v${version}`;
 
     return {
         content: `${registry} ${name}`,

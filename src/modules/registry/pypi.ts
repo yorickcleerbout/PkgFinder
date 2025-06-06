@@ -1,30 +1,28 @@
+import type { PkgSuggestion, RegistrySuggestionInput } from '../types';
 import { buildSuggestion } from '../utils.js';
 import { getFlairMode } from '../settings.js';
 
-export interface PypiSuggestion {
-    content: string;
-    description: string;
-}
-
-export async function fetchPypiSuggestions(query: string): Promise<PypiSuggestion[]> {
+export async function fetchPypiSuggestions(query: string): Promise<PkgSuggestion[]> {
     const flairMode = await getFlairMode();
     const names = await fetchSearchResultsFromWeb(query);
 
-    const suggestions: PypiSuggestion[] = [];
+    const suggestions: PkgSuggestion[] = [];
 
     for (const name of names.slice(0, 5)) {
         try {
             const info = await fetchPypiPackageInfo(name);
             const { version, summary, upload_time } = info;
 
-            suggestions.push(buildSuggestion({
+            const input: RegistrySuggestionInput = {
                 registry: 'pypi',
-                name: name,
-                summary: summary,
-                version: version,
-                updated: new Date(upload_time).toLocaleDateString(),
+                name,
+                summary,
+                version,
+                updated: upload_time,
                 flairMode
-            }))
+            };
+
+            suggestions.push(buildSuggestion(input));
         } catch (e) {
             console.log(e);
         }
