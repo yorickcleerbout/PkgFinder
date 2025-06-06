@@ -17,7 +17,7 @@ export async function fetchSuggestionsByPrefix(prefix: string, query: string) {
     }
 }
 
-export function resolvePackageUrl(prefix: string, query: string): string {
+export function resolvePackageUrl(prefix: string, query: string): string | undefined {
     const normalized = normalizePrefix(prefix);
     const meta = registryMetaMap[normalized];
 
@@ -25,8 +25,7 @@ export function resolvePackageUrl(prefix: string, query: string): string {
         return `${meta.baseUrl}${encodeURIComponent(query)}`;
     }
 
-    // fallback to npm search if unknown
-    return `https://www.npmjs.com/search?q=${encodeURIComponent(prefix + ' ' + query)}`;
+    return undefined;
 }
 
 export function normalizePrefix(prefix: string): keyof typeof registryMetaMap {

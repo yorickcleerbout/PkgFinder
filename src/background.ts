@@ -26,7 +26,12 @@ chrome.omnibox.onInputEntered.addListener(async (text) => {
     const query = queryParts.join(' ') || prefix;
 
     const url = resolvePackageUrl(prefix, query);
-    await chrome.tabs.create({ url });
+
+    if (url) {
+        await chrome.tabs.create({ url });
+    } else {
+        console.warn(`Unknown registry prefix: '${prefix}'. No redirect performed.`);
+    }
 });
 
 chrome.commands.onCommand.addListener(async (command) => {
