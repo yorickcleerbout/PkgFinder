@@ -1,5 +1,5 @@
 // All supported registries
-export type Registry = 'npm' | 'pypi' | 'dart';
+export type Registry = 'npm' | 'py' | 'dart';
 
 // Flair mode (compact or detailed)
 export type FlairMode = 'compact' | 'detailed';

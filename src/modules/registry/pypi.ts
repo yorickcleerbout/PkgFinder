@@ -21,7 +21,7 @@ export async function fetchPypiSuggestions(query: string): Promise<PkgSuggestion
             const { version, summary, upload_time } = pkgInfo.data;
 
             const input: RegistrySuggestionInput = {
-                registry: 'pypi',
+                registry: 'py',
                 name,
                 summary,
                 version,
