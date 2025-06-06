@@ -1,5 +1,5 @@
-import { RegistrySuggestionInput, PkgSuggestion } from './core/types';
-import { registryIcons } from './core/constants.js';
+import { RegistrySuggestionInput, PkgSuggestion } from './types.js';
+import { registryIcons } from './constants.js';
 
 export function escapeOmniboxText(text: string): string {
     return text

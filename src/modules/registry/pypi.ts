@@ -1,6 +1,6 @@
-import type { PkgSuggestion, RegistrySuggestionInput } from '../types';
-import { buildSuggestion } from '../utils.js';
-import { getFlairMode } from '../settings.js';
+import type { PkgSuggestion, RegistrySuggestionInput } from '../core/types.js';
+import { buildSuggestion } from '../core/formatter.js';
+import { getFlairMode } from '../core/settings.js';
 
 export async function fetchPypiSuggestions(query: string): Promise<PkgSuggestion[]> {
     const flairMode = await getFlairMode();

@@ -1,5 +1,5 @@
-import { getRecentSearches } from './modules/storage.js';
-import { fetchSuggestionsByPrefix } from './modules/registryRouter.js';
+import { getRecentSearches } from './modules/core/storage.js';
+import { fetchSuggestionsByPrefix } from './modules/core/registryRouter.js';
 
 chrome.omnibox.onInputChanged.addListener(async (text, suggest) => {
     const [prefix, ...queryParts] = text.trim().split(' ');
