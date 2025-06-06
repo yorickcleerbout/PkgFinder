@@ -1,12 +1,11 @@
+import { escapeOmniboxText } from './utils.js';
+
 export interface PypiSuggestion {
     content: string;
     description: string;
 }
 
 export async function fetchPypiSuggestions(query: string): Promise<PypiSuggestion[]> {
-    const res = await fetch(`https://pypi.org/pypi?%3Aaction=search&term=${encodeURIComponent(query)}&format=json`);
-    const text = await res.text();
-
     const names = await fetchSearchResultsFromWeb(query);
 
     const suggestions: PypiSuggestion[] = [];
@@ -18,7 +17,7 @@ export async function fetchPypiSuggestions(query: string): Promise<PypiSuggestio
 
             suggestions.push({
                 content: `pypi ${name}`,
-                description: `${name} — ${summary || 'No description'} (v${version}, updated ${new Date(upload_time).toLocaleDateString()})`
+                description: escapeOmniboxText(`${name} — ${summary || 'No description'} (v${version}, updated ${new Date(upload_time).toLocaleDateString()})`)
             });
         } catch (e) {
             console.log(e);
