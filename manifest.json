@@ -34,8 +34,8 @@
   "commands": {
     "focus-omnibox": {
       "suggested_key": {
-        "default": "Ctrl+Shift+K",
-        "mac": "Command+Shift+K"
+        "default": "Ctrl+L",
+        "mac": "Command+L"
       },
       "description": "Focus the address bar and type 'pkg'."
     },
