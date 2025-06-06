@@ -1,3 +1,5 @@
+import { escapeOmniboxText } from './utils.js';
+
 export interface NpmSuggestion {
     content: string;
     description: string;
@@ -15,7 +17,7 @@ export async function fetchNpmSuggestions(query: string): Promise<NpmSuggestion[
 
         return {
             content: `npm ${name}`,
-            description: `${name} — ${description} (v${version}, updated ${date})`
+            description: escapeOmniboxText(`${name} — ${description} (v${version}, updated ${date})`)
         };
     });
 }

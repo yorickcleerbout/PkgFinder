@@ -1,3 +1,5 @@
+import { escapeOmniboxText } from './utils.js';
+
 export interface PubSuggestion {
     content: string;
     description: string;
@@ -28,6 +30,6 @@ async function fetchPubPackageInfo(name: string): Promise<PubSuggestion> {
 
     return {
         content: `dart ${name}`,
-        description: `${name} — ${desc} (v${version}, updated ${updated})`
+        description: escapeOmniboxText(`${name} — ${desc} (v${version}, updated ${updated})`)
     };
 }
