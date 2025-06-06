@@ -5,12 +5,12 @@ import { fetchPubSuggestions } from './pub.js';
 export async function fetchSuggestionsByPrefix(prefix: string, query: string) {
     switch (prefix.toLowerCase()) {
         case 'npm':
-            return fetchNpmSuggestions(query);
+            return await fetchNpmSuggestions(query);
         case 'pypi':
-            return fetchPypiSuggestions(query);
+            return await fetchPypiSuggestions(query);
         case 'dart':
         case 'pub':
-            return fetchPubSuggestions(query);
+            return await fetchPubSuggestions(query);
         default:
             return [];
     }
