@@ -2,7 +2,7 @@
   "name": "pkgfinder",
   "version": "1.0.0",
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && npm run copy",
     "watch": "tsc -w",
     "copy": "cp manifest.json dist/ && cp -R public/icons dist/icons"
   },
