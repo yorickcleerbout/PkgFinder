@@ -37,7 +37,14 @@
         "default": "Ctrl+Shift+K",
         "mac": "Command+Shift+K"
       },
-      "description": "Focus the address bar and type 'pkg'"
+      "description": "Focus the address bar and type 'pkg'."
+    },
+    "toggle-flair-mode": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+F",
+        "mac": "Command+Shift+F"
+      },
+      "description": "Toggle description display mode between 'detailed' and 'compact'."
     }
   }
 }
