@@ -3,11 +3,14 @@ import { fetchSuggestionsByPrefix, resolvePackageUrl } from './modules/core/regi
 import { toggleFlairMode } from './modules/core/settings.js';
 
 chrome.omnibox.onInputChanged.addListener(async (text, suggest) => {
-    const [prefix, ...queryParts] = text.trim().split(' ');
-    const query = queryParts.join(' ') || prefix;
+    const parts = text.trim().split(' ');
+    const [prefix, ...queryParts] = parts;
+    const query = queryParts.join(' ');
+    const hasQuery = query.trim().length > 0;
+    const hasPrefixOnly = parts.length === 1 && prefix.length > 0;
 
-    if (!query) {
-        const recent = await getRecentSearches();
+    if (!hasQuery && hasPrefixOnly) {
+        const recent = await getRecentSearches(prefix);
         suggest(recent.map(q => ({
             content: q,
             description: `Recent search: ${q}`
