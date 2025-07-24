@@ -2,6 +2,7 @@ import { registryMetaMap } from './constants.js';
 import { fetchNpmSuggestions } from '../registry/npm.js';
 import { fetchPypiSuggestions } from '../registry/pypi.js';
 import { fetchPubSuggestions } from '../registry/pub.js';
+import { fetchCratesSuggestions } from '../registry/crates.js';
 
 export async function fetchSuggestionsByPrefix(prefix: string, query: string) {
     switch (prefix.toLowerCase()) {
@@ -12,6 +13,8 @@ export async function fetchSuggestionsByPrefix(prefix: string, query: string) {
         case 'dart':
         case 'pub':
             return await fetchPubSuggestions(query);
+        case 'crates':
+            return await fetchCratesSuggestions(query);
         default:
             return [];
     }
@@ -32,6 +35,7 @@ export function normalizePrefix(prefix: string): keyof typeof registryMetaMap {
     switch (prefix.toLowerCase()) {
         case 'pypi': return 'py';
         case 'pub': return 'dart';
+        case 'rust': return 'crates';
         default: return prefix.toLowerCase() as keyof typeof registryMetaMap;
     }
 }

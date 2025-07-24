@@ -29,7 +29,8 @@
   "host_permissions": [
     "https://registry.npmjs.org/*",
     "https://pypi.org/*",
-    "https://pub.dev/*"
+    "https://pub.dev/*",
+    "https://crates.io/crates/*"
   ],
   "commands": {
     "focus-omnibox": {
