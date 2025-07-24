@@ -27,7 +27,6 @@ export function resolvePackageUrl(prefix: string, query: string): string | undef
     if (meta) {
         return `${meta.baseUrl}${encodeURIComponent(query)}`;
     }
-
     return undefined;
 }
 

@@ -57,18 +57,18 @@ You’ll see suggestions with version info, description, and links — click one
 
 ## 📚 Supported Registries
 
-| Prefix     | Registry      | Language        | Icon | Base URL                                 |
-|------------|---------------|-----------------|------|-------------------------------------------|
-| `npm`      | npm           | JavaScript      | 🟢   | [https://www.npmjs.com/package/](https://www.npmjs.com/package/)    |
-| `py`       | PyPI          | Python          | 🐍   | [https://pypi.org/project/](https://pypi.org/project/)         |
-| `pub`      | pub.dev       | Dart / Flutter  | 🎯   | [https://pub.dev/packages/](https://pub.dev/packages/)         |
+| Prefix   | Registry  | Language       | Icon | Base URL                                 |
+|----------|-----------|----------------|------|-------------------------------------------|
+| `npm`    | npm       | JavaScript     | 🟢   | [https://www.npmjs.com/package/](https://www.npmjs.com/package/)    |
+| `py`     | PyPI      | Python         | 🐍   | [https://pypi.org/project/](https://pypi.org/project/)         |
+| `pub`    | pub.dev   | Dart / Flutter | 🎯   | [https://pub.dev/packages/](https://pub.dev/packages/)         |
+| `crates` | Crates.io | Rust           | 🦀   | [https://crates.io/crates/](https://crates.io/crates/)         |
 
 
 ## 🛠 Coming Soon
 
 These additional ecosystems are planned:
 
-* 🦀 cargo → crates.io (Rust)
 * 🐘 packagist → PHP Composer
 * 💠 nuget → .NET & C#
 * 💎 gem → RubyGems

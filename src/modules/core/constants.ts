@@ -6,6 +6,7 @@ export interface RegistryMeta {
     baseUrl: string;
 }
 
+// Registry MetaData (Labels, Icons, etc)
 export const registryMetaMap: Record<Registry, RegistryMeta> = {
     npm: {
         label: 'npm',
