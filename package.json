@@ -3,11 +3,13 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w"
+    "build": "npx vite build"
   },
   "devDependencies": {
+    "@crxjs/vite-plugin": "^2.0.3",
     "@types/chrome": "^0.0.326",
-    "typescript": "^5.0.0"
+    "@types/node": "^24.1.0",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5"
   }
 }
