@@ -2,6 +2,8 @@
 
 PkgFinder is a lightweight and fast browser extension that adds smart package discovery directly to your address bar. Just type `pkg` followed by a query and instantly jump to your favorite package registry.
 
+👉 [Changelog](./CHANGELOG.md)
+
 ---
 
 ## ✨ Features
