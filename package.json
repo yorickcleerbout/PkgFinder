@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc && npm run copy-static",
-    "copy-static": "cpy public/** dist/public --parents && cpy manifest.json dist/"
+    "copy-static": "cpy public/** dist/ --parents && cpy manifest.json dist/"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.326",
