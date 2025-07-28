@@ -27,5 +27,10 @@ export const registryMetaMap: Record<Registry, RegistryMeta> = {
         label: 'Rust',
         icon: '🦀 Rust',
         baseUrl: 'https://crates.io/crates/'
+    },
+    php: {
+        label: 'PHP',
+        icon: '🐘 PHP',
+        baseUrl: 'https://packagist.org/packages/'
     }
 };

@@ -1,5 +1,5 @@
 // All supported registries 
-export type Registry = 'npm' | 'py' | 'dart' | 'crates';
+export type Registry = 'npm' | 'py' | 'dart' | 'crates' | 'php';
 
 // Flair mode (compact or detailed)
 export type FlairMode = 'compact' | 'detailed';
