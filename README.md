@@ -65,13 +65,13 @@ You’ll see suggestions with version info, description, and links — click one
 | `py`     | PyPI      | Python         | 🐍   | [https://pypi.org/project/](https://pypi.org/project/)         |
 | `pub`    | pub.dev   | Dart / Flutter | 🎯   | [https://pub.dev/packages/](https://pub.dev/packages/)         |
 | `crates` | Crates.io | Rust           | 🦀   | [https://crates.io/crates/](https://crates.io/crates/)         |
+| `php`    | Packagist | PHP            | 🐘   | [https://packagist.org/packages/](https://packagist.org/packages/)         |
 
 
 ## 🛠 Coming Soon
 
 These additional ecosystems are planned:
 
-* 🐘 packagist → PHP Composer
 * 💠 nuget → .NET & C#
 * 💎 gem → RubyGems
 * ☕ maven → Java / Kotlin

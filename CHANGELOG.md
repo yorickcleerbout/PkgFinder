@@ -4,6 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [[v1.2.1] – 2025-07-28](https://github.com/yorickcleerbout/PkgFinder/releases/tag/v1.2.1)
+### Added
+- 🐘 Added support for PHP Packagist
+- Dynamic User-Agent in `safeFetch`
+  - `safeFetch` automatically adds an `Accept: application/json` header.
+  - A `User-Agent` header is now sent in all API requests, dynamically including the extension version from `chrome.runtime.getManifest()` (e.g., `PkgFinder/1.2.0`).
+
 ## [[v1.1.1] – 2025-07-24](https://github.com/yorickcleerbout/PkgFinder/releases/tag/v1.1.1)
 ### Fixed
 - 🐞 Recent search suggestions no longer fail to display when using `pkg <registry>` with no query
